@@ -1,5 +1,7 @@
-
-<!-- ৪.২ - বিভিন্ন ধরনের এইচটিটিপি ভার্ব যেমন GET POST PUT DELETE PATCH নিয়ে আলোচনা -->
+<!-- ৪.৩ - ইউজারের ইনপুট স্যানিটাইজ করা -->
+<?php 
+header('X-XSS-Protection:0');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,14 +33,22 @@
                     suscipit maxime architecto? Sed hic culpa nesciunt?</p>
 
                 <p>
-                    <?php if(isset($_REQUEST['fname']) && !empty($_REQUEST['fname'])) : ?>
-                        First Name: <?php echo $_REQUEST['fname'] ?> <br>
-                    <?php endif; ?>
-                    <?php if(isset($_REQUEST['lname']) && !empty($_REQUEST['lname'])): ?>
-                        Last Name: <?php echo $_REQUEST['lname'] ?>
-                    <?php endif; ?>
+                    <?php 
+                        $fname = "";
+                        $lname = "";
+                    ?>
+                    <?php if(isset($_REQUEST['fname']) && !empty($_REQUEST['fname'])){
+                        // $fname = htmlspecialchars($_REQUEST['fname'])."<br>";
+                        $fname = filter_input(INPUT_GET, 'fname', FILTER_SANITIZE_FULL_SPECIAL_CHARS)."<br>"; //sanitization
+                    } ?> 
+                    <?php if(isset($_REQUEST['lname']) && !empty($_REQUEST['lname'])){
+                        $lname = filter_input(INPUT_GET, 'lname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    } ?>
+                </p>
 
-
+                <p>
+                    First Name: <?php echo $fname; ?>
+                    Last Name: <?php echo $lname; ?>
                 </p>
             </div>
         </div>
@@ -47,10 +57,10 @@
         <div class="column column-60 column-offset-20">
             <form method="GET"><!-- HTTP VERB -->
                 <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname" type="button">
+                <input type="text" id="fname" name="fname" value="<?Php echo $fname; ?>">
 
                 <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname" type="button">
+                <input type="text" id="lname" name="lname" value="<?Php echo $lname; ?>">
 
                 <button type="submit">Submit</button>
             </form>

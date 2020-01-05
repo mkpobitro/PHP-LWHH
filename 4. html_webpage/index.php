@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
 
     <style>
-        body{
-            margin-top: 100px;
-        }
+    body {
+        margin-top: 100px;
+    }
     </style>
 
 </head>
