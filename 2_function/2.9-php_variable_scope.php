@@ -4,20 +4,23 @@
 
 $name = "Earth";
 function something(){ //global Scope
-    // global $name;
+    global $name;
     echo $name;
     // echo $GLOBALS["name"]; // eta use kora bad practice
 }
-something();
+// something();
 
+echo PHP_EOL;
     
-function something(){
-    $name = "Earth"; //Local Scope
-    $name;
+function something2(){
+    global $country;
+    $country = "Bangladesh"; //Local Scope
+    echo $country;
+    
 }
+something2();
 
-something();
-
+echo PHP_EOL;
 
 function doSomething(){
     static $i; //Static Scope

@@ -26,12 +26,12 @@ include_once("functions.php")
 </head>
 
 <body>
-    <div class="container">
+    <div class="container"> jkjk
         <div class="row">
             <div class="column column-60 column-offset-20">
                 <h1>Hello World</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste laudantium tempora fuga mollitia
-                    suscipit maxime architecto? Sed hic culpa nesciunt?</p>
+                    suscipit maxime architecto? Sed hic culpa nesciunt? lorem ipsum</p>
 
                 <p>
                     <?php 

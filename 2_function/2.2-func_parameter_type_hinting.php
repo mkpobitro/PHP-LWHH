@@ -13,7 +13,7 @@
     echo "Factorial of {$x} is ".factorial($x); // Factorial of 6 is 720
 
 
-    // if PHP7 version is not avaiable we can check this way:
+    // if PHP7 version is not available we can check this way:
     function factorial($n){
 
         if( gettype($n)!="integer" ){
