@@ -17,3 +17,5 @@ for($i=1; $i<=$length; $i++){
 echo PHP_EOL;
 
 echo strrev($string);
+
+echo PHP_EOL;
