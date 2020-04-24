@@ -1,9 +1,9 @@
 <?php
 require_once "inc/functions.php";
 $blank = '';
-$info = '';
+$info  = '';
 $error = $_POST['error'] ?? 0;
-$task = $_GET['task'] ?? 'report';
+$task  = $_GET['task'] ?? 'report';
 
 if ( 'delete' == $task ) {
     $id = filter_input( INPUT_GET, 'id', FILTER_SANITIZE_STRING );
@@ -18,15 +18,15 @@ if ( 'seed' == $task ) {
 }
 $fname = '';
 $lname = '';
-$roll = '';
+$roll  = '';
 if ( isset( $_POST['submit'] ) ) {
     // $fname = $_POST['fname'];
     // $lname = $_POST['lname'];
     // $roll = $_POST['roll'];
     $fname = filter_input( INPUT_POST, 'fname', FILTER_SANITIZE_STRING );
     $lname = filter_input( INPUT_POST, 'lname', FILTER_SANITIZE_STRING );
-    $roll = filter_input( INPUT_POST, 'roll', FILTER_SANITIZE_STRING );
-    $id = filter_input( INPUT_POST, 'id', FILTER_SANITIZE_STRING );
+    $roll  = filter_input( INPUT_POST, 'roll', FILTER_SANITIZE_STRING );
+    $id    = filter_input( INPUT_POST, 'id', FILTER_SANITIZE_STRING );
 
     if ( $id ) {
         if ( $fname != '' && $lname != '' && $roll != '' ) {
@@ -57,6 +57,7 @@ if ( isset( $_POST['submit'] ) ) {
     <title>CRUD Project</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="assets/js/script.js"></script>
 </head>
 <body>
     <div class="container crud-project m-auto w-50">
@@ -115,7 +116,7 @@ if ( isset( $_POST['submit'] ) ) {
         <!-- Student Update Form -->
         <?php if ( 'edit' == $task ): ?>
     <?php $id = filter_input( INPUT_GET, 'id', FILTER_SANITIZE_STRING );
-$student = getStudent( $id );
+$student      = getStudent( $id );
 
 if ( $student ): ?>
     <div class="row">
@@ -141,6 +142,6 @@ endif;?>
 
     </div>
 
-    <script type="text/javascript" src="assets/js/script.js"></script>
+
 </body>
 </html>

@@ -6,63 +6,63 @@ $error = $_POST['error'] ?? 0;
 $task  = $_GET['task'] ?? 'report';
 
 if ( 'edit' == $task ) {
- if ( !hasPrivilege() ) {
-  header( 'location: index.php?task=report' );
- }
+    if ( !hasPrivilege() ) {
+        header( 'location: index.php?task=report' );
+    }
 }
 
 if ( 'delete' == $task ) {
- if ( !isAdmin() ) {
-  header( 'location: index.php?task=report' );
-  return;
- }
- $id = filter_input( INPUT_GET, 'id', FILTER_SANITIZE_STRING );
- if ( $id > 0 ) {
-  deleteStudent( $id );
-  header( 'location: index.php?task=report' );
- }
+    if ( !isAdmin() ) {
+        header( 'location: index.php?task=report' );
+        return;
+    }
+    $id = filter_input( INPUT_GET, 'id', FILTER_SANITIZE_STRING );
+    if ( $id > 0 ) {
+        deleteStudent( $id );
+        header( 'location: index.php?task=report' );
+    }
 }
 if ( 'seed' == $task ) {
- if ( !isAdmin() ) {
-  header( 'location: index.php?task=report' );
-  return;
- }
- seed();
- $info = "Seeding Completed";
+    if ( !isAdmin() ) {
+        header( 'location: index.php?task=report' );
+        return;
+    }
+    seed();
+    $info = "Seeding Completed";
 }
 $fname = '';
 $lname = '';
 $roll  = '';
 if ( isset( $_POST['submit'] ) ) {
- // $fname = $_POST['fname'];
- // $lname = $_POST['lname'];
- // $roll = $_POST['roll'];
- $fname = filter_input( INPUT_POST, 'fname', FILTER_SANITIZE_STRING );
- $lname = filter_input( INPUT_POST, 'lname', FILTER_SANITIZE_STRING );
- $roll  = filter_input( INPUT_POST, 'roll', FILTER_SANITIZE_STRING );
- $id    = filter_input( INPUT_POST, 'id', FILTER_SANITIZE_STRING );
+    // $fname = $_POST['fname'];
+    // $lname = $_POST['lname'];
+    // $roll = $_POST['roll'];
+    $fname = filter_input( INPUT_POST, 'fname', FILTER_SANITIZE_STRING );
+    $lname = filter_input( INPUT_POST, 'lname', FILTER_SANITIZE_STRING );
+    $roll  = filter_input( INPUT_POST, 'roll', FILTER_SANITIZE_STRING );
+    $id    = filter_input( INPUT_POST, 'id', FILTER_SANITIZE_STRING );
 
- if ( $id ) {
-  if ( $fname != '' && $lname != '' && $roll != '' ) {
-   $result = updateStudent( $id, $fname, $lname, $roll );
-   if ( $result ) {
-    header( 'location: index.php?task=report' );
-   } else {
-    $error = 1;
-   }
-  }
- } else {
-  if ( $fname != '' && $lname != '' && $roll != '' ) {
-   $result = addStudent( $fname, $lname, $roll );
-   if ( $result ) {
-    header( 'location: index.php?task=report' );
-   } else {
-    $error = 1;
-   }
-  } else {
-   $blank = '<p class="text-danger">| All Fields Must be Required</p>';
-  }
- }
+    if ( $id ) {
+        if ( $fname != '' && $lname != '' && $roll != '' ) {
+            $result = updateStudent( $id, $fname, $lname, $roll );
+            if ( $result ) {
+                header( 'location: index.php?task=report' );
+            } else {
+                $error = 1;
+            }
+        }
+    } else {
+        if ( $fname != '' && $lname != '' && $roll != '' ) {
+            $result = addStudent( $fname, $lname, $roll );
+            if ( $result ) {
+                header( 'location: index.php?task=report' );
+            } else {
+                $error = 1;
+            }
+        } else {
+            $blank = '<p class="text-danger">| All Fields Must be Required</p>';
+        }
+    }
 }
 ?>
 
@@ -87,7 +87,7 @@ if ( isset( $_POST['submit'] ) ) {
                 <?php include_once 'inc/templates/nav.php';?>
                 <hr>
                 <?php if ( $info != '' ) {
- echo "<p>{$info}</p>";
+    echo "<p>{$info}</p>";
 }?>
             </div>
         </div>
@@ -113,7 +113,7 @@ if ( isset( $_POST['submit'] ) ) {
         <!-- Add New Student -->
         <?php if ( 'add' == $task ): ?>
             <?php if ( $blank != '' ) {
- echo $blank;
+    echo $blank;
 }?>
             <div class="row">
                 <div class="add-new w-75">
