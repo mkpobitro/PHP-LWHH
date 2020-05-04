@@ -1,2 +1,0 @@
-admin,2eb7a415f1cde8675b8f6089bdf935ef,admin
-editor,70693e458a02b1810e16112aad100f66,editor

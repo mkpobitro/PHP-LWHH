@@ -1,3 +1,0 @@
-Pobitro,Raj,24,1
-Karim,Shekh,22,2
-Sumon,Sarkar,27,3
