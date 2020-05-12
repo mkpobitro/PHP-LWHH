@@ -1,0 +1,11 @@
+body {
+    margin-top: 30px;
+}
+
+#main {
+    padding: 0px 150px 0px 150px;
+}
+
+#bulkAction {
+    width: 200px;
+}
