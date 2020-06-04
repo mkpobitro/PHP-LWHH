@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajax Test</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <style>
+    body {
+      padding-top: 100px;
+    }
+
+    .data-trigger {
+      padding: 50px 0px;
+    }
+
+    .data-value {
+      padding: 50px 10px;
+      background: rgb(242, 242, 242);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 data-trigger">
+        <h4>Trigger</h4>
+        <form action="">
+          <input type="button" id="send" value="Send Data" />
+        </form>
+      </div>
+      <div class="col-md-8 data-value">
+        <pre id="result"></pre>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  // function sendData() {
+  //   let params = {
+  //     key1: "Value 1",
+  //     key2: "Value 2",
+  //     key3: "Value 3 & More",
+  //   };
+  //   let queryString = formatParams(params);
+  //   let xhr = new XMLHttpRequest();
+  //   xhr.open("GET", "25.4_data.php?" + queryString, true);
+  //   // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  //   xhr.onreadystatechange = function () {
+  //     if (this.readyState === 4 && this.status === 200) {
+  //       document.getElementById("result").innerHTML = this.responseText;
+
+  //       var response = JSON.parse(this.responseText);
+  //       console.log(response.result);
+  //     }
+  //   };
+  //   xhr.send();
+  // }
+
+  // function formatParams(data) {
+  //   return new URLSearchParams(data).toString();
+  //   //   return Object.keys(data)
+  //   //     .map(function (key) {
+  //   //       return key + "=" + encodeURIComponent(data[key]);
+  //   //     })
+  //   //     .join("&");
+  // }
+
+  function sendDataUsingjQuery() {
+    let params = {
+      "key1": "Value 1",
+      "key2": "Value 2",
+      "key3": "Value 3 & More",
+      "foo": "Bar",
+      "sender": "jQuery",
+    };
+
+    $.ajax({
+      method: "POST",
+      url: "25.4_data.php",
+      data: params
+    }).done(function (response) {
+      $("#result").html(response);
+    });
+
+    // $.post("25.4_data.php", params, function (response) {
+    //   $("#result").html(response);
+    // })
+  }
+
+
+
+  document.getElementById("send").addEventListener("click", function () {
+    sendDataUsingjQuery();
+  });
+</script>
+
+</html>
