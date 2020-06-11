@@ -1,0 +1,7 @@
+{
+    "require": {
+        "components/jquery": "^3.5",
+        "components/bootstrap": "^4.5",
+        "predis/predis": "^1.1"
+    }
+}
