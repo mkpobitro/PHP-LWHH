@@ -1,56 +1,33 @@
 <?php
 //৩.১৭ - অ্যারের ইউটিলিটি ফাংশনস - খুবই জরুরী - অ্যারে রিডিউস
 
-$numbers = array(1,2,3,4,5,6,7);
+$numbers = array( 1, 2, 3, 4, 5, 6, 7 );
 
-function sum($oldValue, $newValue){
-    return $oldValue+$newValue;
+function sum( $oldValue, $newValue ) {
+    return $oldValue + $newValue;
 }
 
-$sum = array_reduce($numbers, 'sum');  
+$sum = array_reduce( $numbers, 'sum' );
 echo $sum; // 28
 //array_reduce ফাংশন এটাকে এভাবে এক্সিকিউট করবে
-// sum(0,1) / 1 
+// sum(0,1) / 1
 // sum(1,2) / 3
 // sum(3,3) / 6
 // sum(6,4) / 10
 
 echo PHP_EOL;
 
-function even($old, $new){
-    if($new%2==0){
-        return $old+$new;
+function even( $old, $new ) {
+    if ( $new % 2 == 0 ) {
+        return $old + $new;
     }
     return $old;
 }
 
-$even = array_reduce($numbers, 'even');
+$even = array_reduce( $numbers, 'even' );
 echo "Summation of Even Numbers $even.\n"; //12
 
-echo "Total count numbers ".count($numbers);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+echo "Total count numbers " . count( $numbers );
 
 // function sum($carry, $item)
 // {
